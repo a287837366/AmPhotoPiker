@@ -26,4 +26,6 @@
 
 -(void)clickPreview;
 
+-(void)clickComfirmBtn;
+
 @end

@@ -36,6 +36,7 @@
         [selectButton setTitle:@"预览" forState:UIControlStateNormal];
         [selectButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         [selectButton addTarget:self action:@selector(previewPhotos:) forControlEvents:UIControlEventTouchUpInside];
+        selectButton.hidden = YES;
         
         confirmButton = [[UIButton alloc] init];
         confirmButton.frame = CGRectMake(Screen_Width - 100 - 20, 0, 100, AM_ToolBarH);
@@ -43,6 +44,7 @@
         [confirmButton setTitle:@"确定" forState:UIControlStateNormal];
         confirmButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         [confirmButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [confirmButton addTarget:self action:@selector(clickComfirmButton:) forControlEvents:UIControlEventTouchUpInside];
         confirmButton.userInteractionEnabled = NO;
         
         
@@ -68,6 +70,13 @@
 
     [self.delegate clickPreview];
 }
+//点击确认按钮
+-(void)clickComfirmButton:(UIButton *)button
+{
+    
+    [self.delegate clickComfirmBtn];
+}
+
 
 #pragma mark - <Public>
 -(void)setCount:(NSInteger)count{
@@ -90,7 +99,7 @@
     self.countLable.text = [NSString stringWithFormat:@"%ld", (long)count];
     
     [confirmButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    confirmButton.userInteractionEnabled = NO;
+    confirmButton.userInteractionEnabled = YES;
     
     
 }

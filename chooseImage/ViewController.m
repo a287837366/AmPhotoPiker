@@ -7,9 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "AmPhotoHeader.h"
 #import "AmPhotoPikerViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <AmPhotoDidSelectedDelegate>
 
 @end
 
@@ -24,9 +25,17 @@
     [super didReceiveMemoryWarning];
 
 }
+
+-(void)didSelectedAmPhoto:(NSMutableArray *)photoArray{
+
+    NSLog(@"   %@   ", photoArray);
+    
+}
+
 - (IBAction)testclick:(id)sender {
     
     AmPhotoPikerViewController *piker = [[AmPhotoPikerViewController alloc] init];
+    piker.selecteDelegate = self;
     [self presentViewController:piker animated:YES completion:nil];
 }
 

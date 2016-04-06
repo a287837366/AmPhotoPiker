@@ -8,7 +8,6 @@
 
 #import "AmPhotoPikerViewController.h"
 #import "AmPhotoGroupViewController.h"
-#import "AmPhotoHeader.h"
 
 
 
@@ -29,6 +28,7 @@
     
     AmPhotoGroupViewController *groupVc = [[AmPhotoGroupViewController alloc] init];
     groupVc.delegate = self;
+    groupVc.selecteDelegate = self.selecteDelegate;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:groupVc];
     
     NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:NavigationTitle_Color, NSForegroundColorAttributeName, nil];

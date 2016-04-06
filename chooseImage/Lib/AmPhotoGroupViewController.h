@@ -17,6 +17,8 @@
 //可选择最大数量
 @property (nonatomic, assign) NSInteger maxCount;
 
+@property (nonatomic, weak) id<AmPhotoDidSelectedDelegate> selecteDelegate;
+
 @end
 
 

@@ -61,11 +61,11 @@
     __weak typeof(self) weakSelf = self;
     
     [dataTools getAllGroupWithPhotos:^(NSArray *groups) {
-        self.groups = groups;
+        weakSelf.groups = groups;
         
-        [self gotoAsserVC:NO group:self.groups[0]];
+        [self gotoAsserVC:NO group:weakSelf.groups[0]];
         
-        weakSelf.tableView.dataSource = self;
+        weakSelf.tableView.dataSource = weakSelf;
         [weakSelf.tableView reloadData];
     }];
     
@@ -102,6 +102,7 @@
 -(void)gotoAsserVC:(BOOL)animation group:(AmPhotoGroupModel *)group{
 
     AmPhotoPickerAssetsViewController *assetsVC = [[AmPhotoPickerAssetsViewController alloc] init];
+    assetsVC.selecteDelegate = self.selecteDelegate;
     assetsVC.groupModel = group;
     [self.navigationController pushViewController:assetsVC animated:animation];
 }
